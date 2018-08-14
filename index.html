@@ -176,20 +176,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="RGB颜色空间"><a href="#RGB颜色空间" class="headerlink" title="RGB颜色空间"></a>RGB颜色空间</h2><p> RGB(red,green,blue)颜色空间最常用的用途就是显示器系统（计算机、电视机等都是采用RGB颜色空间来进行图像显示）。一般来说，电脑，电视机等是利用三个电子枪分别发射R分量，G分量，B分量的电子束，以此来激发屏幕上的RGB三种颜色的荧光粉，从而发出不同颜色、不同亮度的像素、进而组成了一幅图像；很明显，RGB颜色空间利用了物理学中的三原色叠加从而组成产生各种不同颜色的原理。在RGB颜色空间中，R、G、B三个分量的属性是独立的。也即是说，RGB颜色可以表示为（Red, Green, Blue)。其中，各个分量的数值越小，亮度越低。数值越大，亮度越高；如：（0,0,0）表示黑色，（255，255,255）表示白色；</p>
-<p>RGB颜色空间表示颜色的格式有RGB565,RGB555,RGB24,RGB32等；</p>
-<p>其中，RGB565是使用16位表示一个像素：5位表示R，6位表示G，5位表示B；</p>
-<p>RGB555是另一种16位表示一个像素的方法：分别用5位来表示RGB分量；剩余一位不用；</p>
-<p>RGB24是使用24位表示一个像素：分别用8位表示RGB各个分量；这种方式最为常见；</p>
-<p>RGB32是使用32位来表示一个像素：分别用8位表示RGB各个分量；剩余8位为alpha通道，也就是用来表示图像的“透明度”。注意：在某些系统中，剩余的8位并没有使用；</p>
-<p>RGB色彩空间称为与设备相关的色彩空间,因为不同的扫描仪扫描同一幅图像，会得到不同色彩的图像数据；不同型号的显示器显示同一幅图像，也会有不同 的色彩显示结果。显示器和扫描仪使用的RGB空间与CIE 1931 RGB真实三原色表色系统空间是不同的，后者 是与设备无关的颜色空间。</p>
-<h2 id="HSV颜色空间"><a href="#HSV颜色空间" class="headerlink" title="HSV颜色空间"></a>HSV颜色空间</h2><p>HSL和HSV都是一种将RGB色彩模型中的点在圆柱坐标系中的表示法。这两种表示法试图做到比基于笛卡尔坐标系的几何结构RGB更加直观。</p>
-<p>HSL即色相、饱和度、亮度（英语：Hue, Saturation, Lightness）。HSV即色相、饱和度、明度（英语：Hue, Saturation, Value），又称HSB，其中B即英语：Brightness。</p>
-<p>色相（H）是色彩的基本属性，就是平常所说的颜色名称，如红色、黄色等。<br>饱和度（S）是指色彩的纯度，越高色彩越纯，低则逐渐变灰，取0-100%的数值。<br>明度（V），亮度（L），取0-100%。<br>在opencv中，取值范围为：H(0-180)，S(0-255)，V(0-255)<br>HSL和HSV二者都把颜色描述在圆柱坐标系内的点，这个圆柱的中心轴取值为自底部的黑色到顶部的白色而在它们中间的是灰色，绕这个轴的角度对应于“色相”，到这个轴的距离对应于“饱和度”，而沿着这个轴的高度对应于“亮度”，“色调”或“明度”。</p>
-<p>这两种表示在目的上类似，但在方法上有区别。二者在数学上都是圆柱，但HSV（色相，饱和度，明度）在概念上可以被认为是颜色的倒圆锥体（黑点在下顶点，白色在上底面圆心），HSL在概念上表示了一个双圆锥体和圆球体（白色在上顶点，黑色在下顶点，最大横切面的圆心是半程灰色）。注意尽管在HSL和HSV中“色相”指称相同的性质，它们的“饱和度”的定义是明显不同的。</p>
-<p>因为HSL和HSV是设备依赖的RGB的简单变换，(h, s, l)或 (h, s, v)三元组定义的颜色依赖于所使用的特定红色、绿色和蓝色“加法原色”。每个独特的RGB设备都伴随着一个独特的HSL和HSV空间。但是 (h, s, l)或 (h, s, v)三元组在被约束于特定RGB空间比如sRGB的时候就更明确了。</p>
-<p>HSV模型在1978年由埃尔维·雷·史密斯创立，它是三原色光模式的一种非线性变换。</p>
-
+        <h2 id="RGB颜色空间"><a href="#RGB颜色空间" class="headerlink" title="RGB颜色空间"></a>RGB颜色空间</h2><p> RGB(red,green,blue)颜色空间最常用的用途就是显示器系统（计算机、电视机等都是采用RGB颜色空间来进行图像显示）。一般来说，电脑，电视机等是利用三个电子枪分别发射R分量，G分量，B分量的电子束，以此来激发屏幕上的RGB三种颜色的荧光粉，从而发出不同颜色、不同亮度的像素、进而组成了一幅图像；很明显，RGB颜色空间利用了物理学中的三原色叠加从而组成产生各种不同颜色的原理。在RGB颜色空间中，R、G、B三个分量的属性是独立的。也即是说，RGB颜色可以表示为（Red, Green, Blue)。其中，各个分量的数值越小，亮度越低。数值越大，亮度越高；如：（0,0,0）表示黑色，（255，255,255）表示白色。<br>
+        
+          <a class="article-more-a" href="/2018/08/14/RGB颜色空间/#more">more >></a>
+        
       
 
       
@@ -266,16 +256,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
+        
+          <a class="article-more-a" href="/2018/08/10/hello-world/#more">more >></a>
+        
       
 
       
