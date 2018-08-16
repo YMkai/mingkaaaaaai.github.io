@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Deep Dark">
 <meta property="og:description" content="在有些源码中，代码结尾会有如下代码：12if __name__ == &amp;quot;__main__&amp;quot;:    main() 似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-16T08:17:16.693Z">
+<meta property="og:updated_time" content="2018-08-16T10:22:11.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="if __name__ == &#39;__name__&#39; 理解">
 <meta name="twitter:description" content="在有些源码中，代码结尾会有如下代码：12if __name__ == &amp;quot;__main__&amp;quot;:    main() 似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。">
@@ -181,7 +181,9 @@
       
         <p>在有些源码中，代码结尾会有如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
 <p>似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。<br><a id="more"></a></p>
-<h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><p>就像C语言需要一个main()函数一样，许多编程语言都需要一个执行的入口</p>
+<h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><p>就像C语言需要一个main()函数一样，许多编程语言都需要一个执行的入口。也就是说程序的运行会从main函数开始。</p>
+<p>而Python不同，作为脚本语言，它不像编译型语言那样需要先将程序编译成二进制，再执行二进制文件。作为解释型语言的Python在运行时是动态地逐行解释运行。也就是从第一行开始运行，没有统一的入口。</p>
+<h2 id="Python模块"><a href="#Python模块" class="headerlink" title="Python模块"></a>Python模块</h2><p>一个Python源码文件</p>
 
       
 
