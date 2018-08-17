@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Deep Dark">
 <meta property="og:description" content="在有些源码中，代码结尾会有如下代码：12if __name__ == &amp;quot;__main__&amp;quot;:    main() 似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-16T10:22:11.234Z">
+<meta property="og:updated_time" content="2018-08-17T07:22:32.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="if __name__ == &#39;__name__&#39; 理解">
 <meta name="twitter:description" content="在有些源码中，代码结尾会有如下代码：12if __name__ == &amp;quot;__main__&amp;quot;:    main() 似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。">
@@ -183,7 +183,21 @@
 <p>似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。<br><a id="more"></a></p>
 <h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><p>就像C语言需要一个main()函数一样，许多编程语言都需要一个执行的入口。也就是说程序的运行会从main函数开始。</p>
 <p>而Python不同，作为脚本语言，它不像编译型语言那样需要先将程序编译成二进制，再执行二进制文件。作为解释型语言的Python在运行时是动态地逐行解释运行。也就是从第一行开始运行，没有统一的入口。</p>
-<h2 id="Python模块"><a href="#Python模块" class="headerlink" title="Python模块"></a>Python模块</h2><p>一个Python源码文件</p>
+<h2 id="Python模块"><a href="#Python模块" class="headerlink" title="Python模块"></a>Python模块</h2><p>一个Python源码文件除了可以被直接运行外，还可以作为模块（库）被导入。不管是导入还是直接运行，最顶层的代码都会被运行（。在实际导入的时候，有一部分代码是不希望被运行的。</p>
+<p>举例说明，在<strong>numberA.py</strong>文件中定义参数a的值，并有函数<strong>print_a</strong>进行输出显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">numberA.py</span><br><span class="line"></span><br><span class="line">a = 1</span><br><span class="line">def print_a():</span><br><span class="line">    print(&apos;a = &apos;, a)</span><br><span class="line">print_a()</span><br></pre></td></tr></table></figure></p>
+<p>该程序执行结果为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = 1</span><br></pre></td></tr></table></figure></p>
+<p>有另一Python文件<strong>sumAB.py</strong>需要调用<strong>number.py</strong>中a值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sumAB.py</span><br><span class="line"></span><br><span class="line">from numberA import a</span><br><span class="line">b = 2</span><br><span class="line">def main():</span><br><span class="line">    print(&apos;a + b = &apos;, a+b)</span><br><span class="line">main()</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = 1</span><br><span class="line">a + b =3</span><br></pre></td></tr></table></figure></p>
+<p>执行结果说明在调用a值时同时执行了<strong>numberA.py</strong>中的输出函数。实际上，我们只希望调用a的值，同时不运行其他不必要的函数。</p>
+<p>这时候改写被调用函数<strong>number.py</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sumAB.py</span><br><span class="line"></span><br><span class="line">from numberA import a</span><br><span class="line">b = 2</span><br><span class="line">def main():</span><br><span class="line">    print(&apos;a + b = &apos;, a+b)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<p>这时候再执行<strong>sumAB.py</strong>，输出结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a + b =3</span><br></pre></td></tr></table></figure></p>
+<h2 id="如何理解"><a href="#如何理解" class="headerlink" title="如何理解"></a>如何理解</h2><p>在查资料时看了有很通俗的解释：</p>
+<ul>
+<li><p>假如你叫<strong>小明.py</strong>，在朋友眼中，你是小明(__name__ == ‘小明’)；在你自己眼中，你是你自己(__name__ == ‘__main__’)。</p>
+</li>
+<li><p>当.py文件被直接运行时，if __name__ == ‘__main__’之下的代码块将被运行；当.py文件以模块形式被导入时，if __name__ == ‘__main__’之下的代码块不被运行。</p>
+</li>
+</ul>
 
       
 
@@ -443,11 +457,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
             
             <div class="clearfix"></div>
