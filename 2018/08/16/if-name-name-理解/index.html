@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Deep Dark">
 <meta property="og:description" content="在有些源码中，代码结尾会有如下代码：12if __name__ == &amp;quot;__main__&amp;quot;:    main() 似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T07:22:32.829Z">
+<meta property="og:updated_time" content="2018-08-17T07:52:26.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="if __name__ == &#39;__name__&#39; 理解">
 <meta name="twitter:description" content="在有些源码中，代码结尾会有如下代码：12if __name__ == &amp;quot;__main__&amp;quot;:    main() 似乎代码在执行时，没有这条代码也能顺利运行，那么这条语句的具体意义是什么呢？在查了一些网上资料之后终于能把这个问题理解清楚。">
@@ -195,8 +195,14 @@
 <ul>
 <li><p>假如你叫<strong>小明.py</strong>，在朋友眼中，你是小明(__name__ == ‘小明’)；在你自己眼中，你是你自己(__name__ == ‘__main__’)。</p>
 </li>
-<li><p>当.py文件被直接运行时，if __name__ == ‘__main__’之下的代码块将被运行；当.py文件以模块形式被导入时，if __name__ == ‘__main__’之下的代码块不被运行。</p>
+<li><p>当.py文件被直接运行时，if __name__ == ‘__main__‘之下的代码块将被运行；当.py文件以模块形式被导入时，if __name__ == ‘__main__’之下的代码块不被运行。</p>
 </li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Python的确是简洁优雅的，<strong>if <strong>name</strong> == “<strong>main</strong>“:</strong>是Pythonic的一个很重要的体现。为了写出更优雅更合理的代码，就要多看多写优质代码。</p>
+<p>&lt;(｀∇´)↗[GO!]</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://www.tuicool.com/articles/jMzqYzF" target="_blank" rel="noopener">http://www.tuicool.com/articles/jMzqYzF</a></li>
+<li><a href="http://stackoverflow.com/questions/4042905/what-is-main-py" target="_blank" rel="noopener">http://stackoverflow.com/questions/4042905/what-is-main-py</a></li>
 </ul>
 
       
